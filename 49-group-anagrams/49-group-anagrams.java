@@ -4,23 +4,32 @@ class Solution {
         List<List<String>> result = new ArrayList<>();
         
         if(strs == null || strs.length == 0) {
-            return new ArrayList();
+         return result; 
         }
         
-        HashMap<String, List> map = new HashMap<>();
+        HashMap<String, List<String>> map = new HashMap<>();
         
         for(String s : strs) {
             char arr[] = s.toCharArray();
             Arrays.sort(arr);
-            String key = String.valueOf(arr);
-            if(!map.containsKey(key)) {
-                map.put(key, new ArrayList());
-            }
+            String ordered = new String(arr); 
             
-            map.get(key).add(s);
+             if(map.containsKey(ordered)) {
+            map.get(ordered).add(s);
         }
         
-        return new ArrayList(map.values());
+        else{ 
+            List<String> strList = new ArrayList<>();
+            strList.add(s);
+            map.put(ordered, strList);
         
+        }
+        }
+        
+        
+        result.addAll(map.values());
+        return result;
     }
+    
+    
 }
