@@ -1,17 +1,15 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-
-        HashMap<Integer,Integer> numberLookup = new HashMap<>();
         
         for(int i = 0; i < nums.length; i++) {
-            int delta = target - nums[i]; 
-            if(numberLookup.containsKey(delta)) {
-                return new int[] {i,numberLookup.get(delta)};
-            }
-            numberLookup.put(nums[i], i);
+            for(int j = i+1; j < nums.length; j++){
+            int res = target - nums[i];
+                if(res == nums[j]) {
+                    return new int[] {i,j};
+                }
+        }
         }
         
-        throw new IllegalArgumentException("connot find");
+        throw new IllegalArgumentException("No number Found");
     }
-    
 }
