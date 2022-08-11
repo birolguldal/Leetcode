@@ -5,19 +5,19 @@ class Solution {
             return false;
         }
         
-        char[] string1 = s.toCharArray();
-        char[] string2 = t.toCharArray();
+        HashMap<Character, Integer> hm = new HashMap<>();
         
-        Arrays.sort(string1);
-        Arrays.sort(string2);
-    
-    
-        if(Arrays.equals(string1, string2)) {
-            return true;
+        for(int i = 0; i < s.length(); i++) {
+        hm.put(s.charAt(i), hm.getOrDefault(s.charAt(i), 0) + 1);
+        hm.put(t.charAt(i), hm.getOrDefault(t.charAt(i), 0) - 1);
         }
+            for(Integer count : hm.values()) {
+                if(count != 0) {
+                    return false;
+                }
+            }
         
-        
-        return false;
-        
-        }
-    }
+    return true;
+
+}
+}
