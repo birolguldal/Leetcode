@@ -1,18 +1,18 @@
 class Solution {
     public boolean containsDuplicate(int[] nums) {
         
-        HashSet<Integer> hm = new HashSet<>();
+        //return true if it shows at least twice
         
-        for(int i = 0; i < nums.length; i++){
+        //sort the array and check the element next to it to see if they're equal 
+        // check the duplicate in a hashset
         
-            if(hm.contains(nums[i])) {
+        Arrays.sort(nums);
+        
+        for(int i = 0; i < nums.length - 1; i++) {
+            if(nums[i] == nums[i+1]) {
                 return true;
             }
-            
-            hm.add(nums[i]);
-      }
-        
+        }
         return false;
-    
-}
+    }
 }
