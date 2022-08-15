@@ -1,31 +1,29 @@
 class Solution {
-    Set<String> dict;  //easier way to access the list
-    HashMap<String, Boolean> cache = new HashMap<>();
     public boolean wordBreak(String s, List<String> wordDict) {
-        dict = new HashSet<>(wordDict);
-        return helper(s);
         
-    }
-    
-    private boolean helper( String s) {
-        if(s == null || s.length() == 0) 
-            return true;
-        if(cache.containsKey(s)) {
-            return cache.get(s);
-        }  
+        Queue<Integer> q = new LinkedList<>();
+        HashSet<Integer> hs = new HashSet<>();
         
-        int n = s.length();
-        for(int i = 1; i <= n; i++) {
-            String left = s.substring(0, i);
-            String right = s.substring(i, n);
-            if(dict.contains(left) && helper(right)) {
-                cache.put(s, true);
-                return true;
-            }
+        q.add(0);
+        
+        while(!q.isEmpty()) {
+            int curIndex = q.poll();
             
+            if(hs.add(curIndex)) {
+                for(int i = curIndex; i <= s.length(); i++) {
+                    
+                    
+                    if(wordDict.contains(s.substring(curIndex, i))) {
+                        if(i == s.length()) {
+                            return true;
+                        }
+                        q.add(i);
+                    }
+                }
+            }
         }
         
-        cache.put(s, false);
         return false;
+        
     }
 }
