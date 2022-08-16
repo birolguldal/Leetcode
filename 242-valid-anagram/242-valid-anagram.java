@@ -5,24 +5,20 @@ class Solution {
             return false;
         }
         
-        HashMap<Character, Integer> hs = new HashMap<Character, Integer>();
-    
-        for(int i = 0; i < s.length(); i++) {
-              hs.put(s.charAt(i), hs.getOrDefault(s.charAt(i), 0) + 1);
-              hs.put(t.charAt(i), hs.getOrDefault(t.charAt(i), 0) - 1);
-        }
-            
-            for(Integer count : hs.values()) {
-                if(count != 0) {
-                    return false;
-                } 
-                
-                }
+        HashMap<Character, Integer> hm = new HashMap<>();
         
-         return true; 
-           
-            }
-           
+        for(int i = 0; i < s.length(); i++) { 
+            hm.put(s.charAt(i), hm.getOrDefault(s.charAt(i),0) + 1);
+            hm.put(t.charAt(i), hm.getOrDefault(t.charAt(i),0) - 1);     
+    }
+        
+        
+        for(Integer count : hm.values()) {
+            if(count != 0) {
+                return false;
+            } 
         }
         
-    
+        return true;
+}
+}
