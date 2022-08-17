@@ -2,28 +2,28 @@ class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
         
         Queue<Integer> q = new LinkedList<>();
-        HashSet<Integer> hs = new HashSet<>();
+        HashSet<Integer> h = new HashSet<>();
         
         q.add(0);
         
         while(!q.isEmpty()) {
-            int curIndex = q.poll();
+        int currentIndex = q.poll();
             
-            if(hs.add(curIndex)) {
-                for(int i = curIndex; i <= s.length(); i++) {
-                    
-                    
-                    if(wordDict.contains(s.substring(curIndex, i))) {
+            
+            if(h.add(currentIndex)) {
+                
+                
+            for(int i = currentIndex; i <= s.length(); i++) {
+                    if(wordDict.contains(s.substring(currentIndex, i))) {
                         if(i == s.length()) {
                             return true;
                         }
+                        
                         q.add(i);
                     }
                 }
             }
-        }
-        
-        return false;
-        
     }
+        return false;
+}
 }
