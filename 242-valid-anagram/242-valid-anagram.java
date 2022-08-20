@@ -13,15 +13,14 @@ class Solution {
             
         }
         
-          for(Integer count : hs.values()) {
-                if(count != 0) {
-                    return false;
-                } 
-                
-                }
-        
-         return true; 
-           
+         for(Integer count : hs.values()) {
+            if(count != 0) {
+                return false;
             }
-           
+               
         }
+             return true;
+            
+        }
+        
+    }
