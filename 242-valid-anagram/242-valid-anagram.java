@@ -5,17 +5,22 @@ class Solution {
             return false;
         }
         
-        char[] arr1 = s.toCharArray();
-        char[] arr2 = t.toCharArray();
+        HashMap<Character, Integer> hm = new HashMap<>();
         
-        Arrays.sort(arr1);
-        Arrays.sort(arr2);
+        for(int i = 0; i < s.length(); i++) {
+
+        hm.put(s.charAt(i), hm.getOrDefault(s.charAt(i), 0) + 1);
+        hm.put(t.charAt(i), hm.getOrDefault(t.charAt(i), 0) - 1);
+            
+        }
         
-       if(Arrays.equals(arr1,arr2)) {
-           return true;
-       } else {
-           return false;
-       }
+        for(Integer count : hm.values()) {
+            if(count != 0) {
+                return false;
+            } 
+        }
+        
+        return true;
         
     }
 }
