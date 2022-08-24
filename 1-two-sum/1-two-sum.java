@@ -5,7 +5,7 @@ class Solution {
         for(int i = 0; i <nums.length; i++) {
             for(int j = i + 1; j < nums.length; j++) {
                 int delta = target - nums[i];
-                if(nums[j] == delta) {
+                if(delta == nums[j]) {
                     return new int[] {i, j};
                 }
             }
